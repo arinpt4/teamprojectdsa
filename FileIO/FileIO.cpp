@@ -1,10 +1,11 @@
 #include "FileIO.h"
-
+#include "BST/BST.h"
+#include "HashTable.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
-
-bool allocateHash(HashTable<Song>*& hash, BinarySearchTree<std::string> &bst, std::string inputFileName) {
+#include <string>
+bool allocateHash(HashTable<Song>*& hash, BST &bst, std::string inputFileName) {
 
 	int lineCount = 0;
 
@@ -39,7 +40,7 @@ int countLines(std::string fileName) {
 	return lineCount;
 }
 
-void readSongData(HashTable<Song>*& hash, BinarySearchTree<std::string> &bst, std::string inputFileName) {
+void readSongData(HashTable<Song>*& hash, BST &bst, std::string inputFileName) {
 	if (!allocateHash(hash, bst, inputFileName)) {
 		std::cout << "No Data!" << "\n";
 		return;
@@ -49,7 +50,7 @@ void readSongData(HashTable<Song>*& hash, BinarySearchTree<std::string> &bst, st
 }
 
 // need to fix - when rehashing, inserts to bst again, so creates duplicates. unless bst checks for duplicates.
-bool loadFromFile(HashTable<Song>*& hash, BinarySearchTree<std::string> &bst, std::string fileName) {	
+bool loadFromFile(HashTable<Song>*& hash, BST &bst, std::string fileName) {	
 	std::ifstream ifs(fileName);
 
 	if (!ifs.is_open())
@@ -77,12 +78,12 @@ bool loadFromFile(HashTable<Song>*& hash, BinarySearchTree<std::string> &bst, st
 
 		Song inputSong(song_id, song_name, artist_name, length, date_published);
 		hash->insert(inputSong, key_to_index);
-		bst.insert(inputSong.getID());
+		bst.insert(inputSong.getID(), /*needs pointer here*/);
 	}
 	ifs.close();
 	return true;
 }
-
+	
 void saveSongData(HashTable<Song>*& hash) {
 	std::ofstream ofs(saveFile);
 	if (!ofs.is_open()) {
@@ -98,7 +99,7 @@ void saveSongData(HashTable<Song>*& hash) {
 	ofs.close();
 }
 
-void reHashData(HashTable<Song>*& hash, BinarySearchTree<std::string>& bst, int lineCount) {
+void reHashData(HashTable<Song>*& hash, BST &bst, int lineCount) {
 	saveSongData(hash);
 	delete hash;
 	hash = new HashTable<Song>(nextPrime(countLines(saveFile) * 2));

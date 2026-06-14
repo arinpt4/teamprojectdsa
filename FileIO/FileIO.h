@@ -8,21 +8,23 @@ Name: Thomas Lwin
 
 #include <functional>
 #include <string>
-
+#include "BST/BST.h"
 #include "Song.h"
 // #include HashTable.h
 // #include BinarySearchTree.h
 
 static const std::string saveFile = "saveData.txt";
 
-bool allocateHash(HashTable<Song>*& hash, BinarySearchTree<std::string> &bst, std::string inputFileName);
+bool allocateHash(HashTable<Song>*& hash, BST &bst, std::string inputFileName);
 int countLines(std::string fileName);
 
-void readSongData(HashTable<Song>*& hash, BinarySearchTree<std::string> &bst, std::string inputFileName);
-bool loadFromFile(HashTable<Song>*& hash, BinarySearchTree<std::string> &bst, std::string fileName);
+void readSongData(HashTable<Song>*& hash, BST &bst, std::string inputFileName);
+bool loadFromFile(HashTable<Song>*& hash, BST &bst, std::string fileName);
 void saveSongData(HashTable<Song>*& hash);
-void reHashData(HashTable<Song>*& hash, BinarySearchTree<std::string>& bst, int lineCount);
+void reHashData(HashTable<Song>*& hash, BST &bst, int lineCount);
 
 // prime checks for hash table resizing
 int nextPrime(int n);
 bool isPrime(int n);
+
+#endif
