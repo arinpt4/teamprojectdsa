@@ -36,6 +36,8 @@ public:
 
 	friend std::ostream &operator<<(std::ostream &temp, const Song &tempSong);
 
+	friend int key_to_index(const Song &song, int size);
+
 private:
 	std::string _song_id; // unique key
 	std::string _song_name;
@@ -43,5 +45,7 @@ private:
 	std::string _length;
 	int _date_published;
 };
+
+int key_to_index(const Song &song, int size);
 
 #endif

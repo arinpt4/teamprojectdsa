@@ -4,51 +4,57 @@
 #include <iostream>
 #include <sstream>
 
-bool allocateHash(std::string inputFileName) {
-	std::ifstream ifs(saveFile);
-	std::string line;
+bool allocateHash(HashTable<Song>*& hash, BinarySearchTree<std::string> &bst, std::string inputFileName) {
+
 	int lineCount = 0;
 
-	// if save file exists
-	if (ifs.is_open()) {
-		while (getline(ifs, line)) {
-			if (!line.empty())
-				++lineCount;
-		}
-		ifs.close();
-	}
-	
-	ifs.clear();
-	ifs.open(inputFileName);
-	// if input file exists
-	if (ifs.is_open()) {
-		while (getline(ifs, line)) {
-			if (!line.empty())
-				++lineCount;
-		}
-		ifs.close();
-	}
+	lineCount += countLines(saveFile);
+	lineCount += countLines(inputFileName);
 	
 	if (lineCount > 0) {
 		// if no existing hash table, create one. otherwise rehash if needed.
 		if (!hash) {
-			HashTable<Song> hash(nextPrime(lineCount * 2));
+			hash = new HashTable<Song>(nextPrime(lineCount * 2));
 		} else {
-			if (100.0 * (lineCount + hash.getCount()) / hash.getSize() > 0.75) {
-				reHashData(hash, lineCount);
-			}
+			if (100.0 * (lineCount + hash->getCount()) / hash->getSize() > 75.0)
+				reHashData(hash, bst, lineCount);
 		}
+		return true;
 	}
 	return false;
 }
 
-void readSongData(std::string inputFileName) {
-	if (!allocateHash(inputFileName)) {
+int countLines(std::string fileName) {
+	std::ifstream ifs(fileName);
+	std::string line;
+	int lineCount = 0;
+
+	if (ifs.is_open()) {
+		while (getline(ifs, line)) {
+			if (!line.empty())
+				++lineCount;
+		}
+		ifs.close();
+	}
+	return lineCount;
+}
+
+void readSongData(HashTable<Song>*& hash, BinarySearchTree<std::string> &bst, std::string inputFileName) {
+	if (!allocateHash(hash, bst, inputFileName)) {
 		std::cout << "No Data!" << "\n";
 		return;
 	}
-	
-	std::ifstream ifs(inputFileName);
+	loadFromFile(hash, bst, inputFileName);
+	loadFromFile(hash, bst, saveFile);
+}
+
+// need to fix - when rehashing, inserts to bst again, so creates duplicates. unless bst checks for duplicates.
+bool loadFromFile(HashTable<Song>*& hash, BinarySearchTree<std::string> &bst, std::string fileName) {	
+	std::ifstream ifs(fileName);
+
+	if (!ifs.is_open())
+		return false;
+
 	// example string format: "NwoUe; just forget; Force of Nature; 3:55; 2004"
 	std::string line;
 	while (getline(ifs, line)) {
@@ -63,54 +69,40 @@ void readSongData(std::string inputFileName) {
 		std::getline(temp, song_id, ';');
 		temp >> std::ws;
 
-		if (song_id.length() != 5) {
-			// std::cout << "Invalid song ID: " << song_id << "\n";
-			continue;
-		}
-		if (std::getline(temp, song_name, ';')) {
-			temp >> std::ws;
-		}
-		if (std::getline(temp, artist_name, ';')) {
-			temp >> std::ws;
-		}
-		if (std::getline(temp, length, ';')) {
-			temp >> std::ws;
-		}
-		if (!(temp >> date_published)) {
-			date_published = 0;
-		}
+		if (song_id.length() != 5) continue;
+		if (std::getline(temp, song_name, ';')) temp >> std::ws;
+		if (std::getline(temp, artist_name, ';')) temp >> std::ws;
+		if (std::getline(temp, length, ';')) temp >> std::ws; 
+		if (!(temp >> date_published)) date_published = 0;
 
 		Song inputSong(song_id, song_name, artist_name, length, date_published);
-		bst.insert(inputSong);
-		hash.insert(inputSong);
+		hash->insert(inputSong, key_to_index);
+		bst.insert(inputSong.getID());
 	}
-
 	ifs.close();
+	return true;
 }
 
-void saveSongData(HashTable<Song> &hash) {
+void saveSongData(HashTable<Song>*& hash) {
 	std::ofstream ofs(saveFile);
 	if (!ofs.is_open()) {
 		std::cout << "Error opening save file: " << saveFile << "\n";
 		return;
 	}
 
-	for (int i = 0; i < hash.getSize(); i++) {
-	
+	for (int i = 0; i < hash->getSize(); i++) {
+		if (hash->getOccupied(i)) {
+			ofs << hash->getItem(i) << "\n";
+		}
 	}
 	ofs.close();
 }
 
-void reHashData(HashTable<Song> &hash, int lineCount) {
-	HashTable<Song> newHash(nextPrime((hash.getSize() + lineCount) * 2));
-	for (int i = 0; i < hash.getSize(); i++) {
-		if (!hash.isEmpty(i)) {
-			for (const auto &song : hash.getBucket(i)) {
-				newHash.insert(song);
-			}
-		}
-	}
-	hash = std::move(newHash);
+void reHashData(HashTable<Song>*& hash, BinarySearchTree<std::string>& bst, int lineCount) {
+	saveSongData(hash);
+	delete hash;
+	hash = new HashTable<Song>(nextPrime(countLines(saveFile) * 2));
+	loadFromFile(hash, bst, saveFile);
 }
 
 int nextPrime(int num) {

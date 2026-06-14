@@ -12,3 +12,7 @@ std::ostream &operator<<(std::ostream &temp, const Song &tempSong) {
 		 << tempSong._date_published;
 	return temp;
 }
+
+int key_to_index(const Song &song, int size) {
+	// not sure what we want to do for the hash function
+}

@@ -6,6 +6,7 @@ Name: Thomas Lwin
 #ifndef FILEIO_H
 #define FILEIO_H
 
+#include <functional>
 #include <string>
 
 #include "Song.h"
@@ -14,11 +15,13 @@ Name: Thomas Lwin
 
 static const std::string saveFile = "saveData.txt";
 
-bool allocateHash();
+bool allocateHash(HashTable<Song>*& hash, BinarySearchTree<std::string> &bst, std::string inputFileName);
+int countLines(std::string fileName);
 
-void readSongData(std::string inputFileName);
-void saveSongData();
-void reHashData(HashTable<Song> &hash, int lineCount);
+void readSongData(HashTable<Song>*& hash, BinarySearchTree<std::string> &bst, std::string inputFileName);
+bool loadFromFile(HashTable<Song>*& hash, BinarySearchTree<std::string> &bst, std::string fileName);
+void saveSongData(HashTable<Song>*& hash);
+void reHashData(HashTable<Song>*& hash, BinarySearchTree<std::string>& bst, int lineCount);
 
 // prime checks for hash table resizing
 int nextPrime(int n);
