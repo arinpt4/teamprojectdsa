@@ -18,7 +18,7 @@ int countLines(std::string fileName);
 
 void readSongData(HashTable<Song>*& hash, BST &bst, std::string inputFileName);
 bool loadFromFile(HashTable<Song>*& hash, BST &bst, std::string fileName);
-void saveSongData(HashTable<Song>*& hash);
+void saveSongData(HashTable<Song>& hash);
 void reHashData(HashTable<Song>*& hash, BST &bst, int lineCount);
 
 // prime checks for hash table resizing

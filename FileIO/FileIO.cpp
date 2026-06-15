@@ -85,23 +85,22 @@ bool loadFromFile(HashTable<Song>*& hash, BST &bst, std::string fileName) {
 	return true;
 }
 
-void saveSongData(HashTable<Song>*& hash) {
+void saveSongData(HashTable<Song>& hash) {
 	std::ofstream ofs(saveFile);
 	if (!ofs.is_open()) {
 		std::cout << "Error opening save file: " << saveFile << "\n";
 		return;
 	}
-
-	for (int i = 0; i < hash->getSize(); i++) {
-		if (hash->getOccupied(i)) {
-			ofs << hash->getItem(i) << "\n";
+	for (int i = 0; i < hash.getSize(); i++) {
+		if (hash.getOccupied(i)) {
+			ofs << hash.getItem(i) << "\n";
 		}
 	}
 	ofs.close();
 }
 
 void reHashData(HashTable<Song>*& hash, BST &bst, int lineCount) {
-	saveSongData(hash);
+	saveSongData(*hash);
 	delete hash;
 	hash = new HashTable<Song>(nextPrime(countLines(saveFile) * 2));
 	bst.clear();

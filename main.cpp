@@ -1,3 +1,8 @@
+/*
+Unit 1: Team Coordination - main(), integration, and testing
+Name: Arin Thakkar
+*/
+
 #include <iostream>
 #include "FileIO/FileIO.h"
 #include "Screen Output/ScreenManager.h"
