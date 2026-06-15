@@ -54,6 +54,36 @@ void displayIndentedTree(BST& bst) {
 }
 
 
+// DELETE MANAGER
+
+void deleteManager(HashTable<Song>& table, BST& bst, Stack& undoStack) {
+    string deleteKey;
+    cout << "\nEnter the Song ID to delete: ";
+    cin >> deleteKey;
+
+    // Use a dummy song to search
+    Song dummySong(deleteKey, "", "", "", 0);
+    Song foundSong;
+
+    // First, check if the song exists in the Hash Table
+    if (table.search(dummySong, key_to_index, foundSong) != -1) {
+        // 1. Push the song onto the undo stack before deleting
+        undoStack.push(foundSong);
+
+        // 2. Remove from Hash Table
+        table.remove(foundSong, key_to_index);
+
+        // 3. Remove from BST
+        bst.remove(deleteKey);
+
+        cout << "\nSuccessfully deleted: " << foundSong.getSong_Name() << "\n";
+        cout << "(You can press 'U' to undo this deletion.)\n";
+    } else {
+        cout << "\nSong ID not found. Deletion failed.\n";
+    }
+}
+
+
 // UNDO DELETE MANAGER
 
 void undoDeleteManager(Stack& undoStack, HashTable<Song>& table, BST& bst) {
@@ -109,7 +139,7 @@ void runMenu(HashTable<Song>& table, BST& bst, Stack& undoStack) {
                 displayIndentedTree(bst);
                 break;
             case 'D':
-                cout << "\n[System: Delete function called. Item pushed to Undo Stack.]\n"; 
+                deleteManager(table, bst, undoStack);
                 break;
             case 'U':
                 undoDeleteManager(undoStack, table, bst);
