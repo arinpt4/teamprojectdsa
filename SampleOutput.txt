@@ -1,0 +1,99 @@
+Loading system data...
+
+=== Music Player Menu ===
+S - Search for a Song
+P - Print data sorted by ID
+D - Delete a Song
+U - Undo delete
+F - Save to file
+Q - Quit
+Enter an option: S
+
+Enter the Song ID to search for: mEKfv
+
+Found: 90210; Travis Scott; 5:39; 2015
+(Collisions during search: 0)
+
+=== Music Player Menu ===
+S - Search for a Song
+P - Print data sorted by ID
+D - Delete a Song
+U - Undo delete
+F - Save to file
+Q - Quit
+Enter an option: P
+
+--- All Songs Sorted by ID ---
+- AfjeI : Children by Robert Miles
+- aJeif : world without words by Nujabes
+- BilKM : escalon by Shiro SAGISU
+- blKiV : 1st samurai by Nujabes
+- bRlkM : Music and Me by fakemink
+- ceVlE : NUMBER 2 by Lil Tecca
+- csEur : Jealous by Eyedress
+- dnGIn : the kill 2 by Lex Armani
+- eiDfj : I Wanna Be Honest by PureSnow
+- eqAkR : 505 by Artic Monkeys
+- eRuHs : I Wonder by Kanye West
+- fIeiE : 1 of 1. by Yves
+- gIemO : Timeless by The Weeknd
+- hIelf : Bane by Destroy Lonely
+- IjfFr : In & Out by Rich Amiri
+- JeIve : Jane! by The Long Faces
+- kEjfy : Club Siberia by Dom Corleo
+- kEofV : Location by Playboi Carti
+- mEKfv : 90210 by Travis Scott
+- nwEfH : No Pole by Don Toliver
+- qfRjF : if looks could kill by Destroy Lonely
+- SfmVk : Marble Floors by Summrs
+- VomcU : Forever Yours by Brent Faiyaz
+- wSKlj : Toxic by slayr
+- xLEjo : x2 by Lil Uzi Vert
+------------------------------
+
+=== Music Player Menu ===
+S - Search for a Song
+P - Print data sorted by ID
+D - Delete a Song
+U - Undo delete
+F - Save to file
+Q - Quit
+Enter an option: D
+
+Enter the Song ID to delete: kEofV
+
+Successfully deleted: Location
+(You can press 'U' to undo this deletion.)
+
+=== Music Player Menu ===
+S - Search for a Song
+P - Print data sorted by ID
+D - Delete a Song
+U - Undo delete
+F - Save to file
+Q - Quit
+Enter an option: U
+
+Successfully restored the most recently deleted song: Location
+
+=== Music Player Menu ===
+S - Search for a Song
+P - Print data sorted by ID
+D - Delete a Song
+U - Undo delete
+F - Save to file
+Q - Quit
+Enter an option: F
+
+Saving data to file...
+Data saved successfully.
+*** The undo stack has been cleared. Undo is no longer possible. ***
+
+=== Music Player Menu ===
+S - Search for a Song
+P - Print data sorted by ID
+D - Delete a Song
+U - Undo delete
+F - Save to file
+Q - Quit
+Enter an option: Q
