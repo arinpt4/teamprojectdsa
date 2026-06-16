@@ -148,8 +148,7 @@ void runMenu(HashTable<Song>& table, BST& bst, Stack& undoStack) {
             case 'F': {
                 cout << "\nSaving data to file...\n";
                 // Call the actual save function from FileIO
-                HashTable<Song>* tempPtr = &table;
-                saveSongData(tempPtr);
+                saveSongData(table);
                 // CRITICAL INSTRUCTION: Clean out the stack upon saving
                 undoStack.clear();
                 cout << "Data saved successfully.\n";
