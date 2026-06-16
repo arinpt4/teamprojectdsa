@@ -9,135 +9,242 @@
 template <class T>
 class HashTable {
 private:
-    HashNode<T>* table;
-    int size;
-    int count;
+HashNode<T>* table;
+int size;
+int count;
+
+```
+// Statistics
+int totalCollisions;
+int longestCollisionPath;
+```
 
 public:
-    HashTable(int s = 101) {
-        size = s;
-        count = 0;
-        table = new HashNode<T>[size];
-    }
+// Constructor
+HashTable(int s = 101) {
+size = s;
+count = 0;
+totalCollisions = 0;
+longestCollisionPath = 0;
 
-    ~HashTable() {
-        delete[] table;
-    }
+```
+    table = new HashNode<T>[size];
+}
 
-    T* insert(const T& item, int (*hashFunction)(const T&, int)) {
-        if (count >= size) {
-            return nullptr; // Hash table is full
-        }
+// Destructor
+~HashTable() {
+    delete[] table;
+}
 
-        int index = hashFunction(item, size);
-        int startIndex = index;
+/*
+ Insert using linear probing.
+ Returns pointer to inserted item.
+ Returns nullptr if duplicate or table full.
+*/
+T* insert(const T& item,
+          int (*hashFunction)(const T&, int)) {
 
-        do {
-            if (table[index].getOccupied() != 1) {
-                table[index].setItem(item);
-                count++;
-                return &table[index].getItemRef();
-            }
-
-            if (table[index].getItem() == item) {
-                return nullptr;
-            }
-
-            index = (index + 1) % size;
-
-        } while (index != startIndex);
-
+    if (count >= size) {
         return nullptr;
     }
 
-    int search(const T& item, int (*hashFunction)(const T&, int), T& foundItem) const {
-        int index = hashFunction(item, size);
-        int startIndex = index;
-        int collisions = 0;
+    int index = hashFunction(item, size);
+    int startIndex = index;
+    int collisions = 0;
 
-        do {
-            if (table[index].getOccupied() == 0) {
-                return -1;
+    do {
+        // Empty slot or tombstone
+        if (table[index].getOccupied() != 1) {
+
+            table[index].setItem(item);
+
+            count++;
+
+            totalCollisions += collisions;
+
+            if (collisions > longestCollisionPath) {
+                longestCollisionPath = collisions;
             }
 
-            if (table[index].getOccupied() == 1 &&
-                table[index].getItem() == item) {
-                foundItem = table[index].getItem();
-                return collisions;
-            }
+            return &(table[index].getItemRef());
+        }
 
-            collisions++;
-            index = (index + 1) % size;
+        // Duplicate key
+        if (table[index].getItem() == item) {
+            return nullptr;
+        }
 
-        } while (index != startIndex);
+        collisions++;
 
-        return -1;
-    }
+        index = (index + 1) % size;
 
-    bool remove(const T& item, int (*hashFunction)(const T&, int)) {
-        int index = hashFunction(item, size);
-        int startIndex = index;
+    } while (index != startIndex);
 
-        do {
-            if (table[index].getOccupied() == 0) {
-                return false;
-            }
+    return nullptr;
+}
 
-            if (table[index].getOccupied() == 1 &&
-                table[index].getItem() == item) {
-                table[index].setOccupied(-1);
-                count--;
-                return true;
-            }
+/*
+ Search.
+ Returns number of collisions.
+ Returns -1 if not found.
+*/
+int search(const T& item,
+           int (*hashFunction)(const T&, int),
+           T& foundItem) const {
 
-            index = (index + 1) % size;
+    int index = hashFunction(item, size);
+    int startIndex = index;
 
-        } while (index != startIndex);
+    int collisions = 0;
 
-        return false;
-    }
+    do {
+        // Never occupied
+        if (table[index].getOccupied() == 0) {
+            return -1;
+        }
 
-    int getSize() const {
-        return size;
-    }
+        // Found
+        if (table[index].getOccupied() == 1 &&
+            table[index].getItem() == item) {
 
-    int getCount() const {
-        return count;
-    }
+            foundItem = table[index].getItem();
 
-    bool getOccupied(int index) const {
-        if (index < 0 || index >= size) {
+            return collisions;
+        }
+
+        collisions++;
+
+        index = (index + 1) % size;
+
+    } while (index != startIndex);
+
+    return -1;
+}
+
+/*
+ Delete using tombstones.
+*/
+bool remove(const T& item,
+            int (*hashFunction)(const T&, int)) {
+
+    int index = hashFunction(item, size);
+    int startIndex = index;
+
+    do {
+        if (table[index].getOccupied() == 0) {
             return false;
         }
 
-        return table[index].getOccupied() == 1;
-    }
+        if (table[index].getOccupied() == 1 &&
+            table[index].getItem() == item) {
 
-    T getItem(int index) const {
-        return table[index].getItem();
-    }
+            table[index].setOccupied(-1);
 
-    double getLoadFactor() const {
-        return 100.0 * count / size;
-    }
+            count--;
 
-    void printHashTable() const {
-        std::cout << "\n--- Hash Table ---\n";
-
-        for (int i = 0; i < size; i++) {
-            std::cout << i << ": ";
-
-            if (table[i].getOccupied() == 1) {
-                std::cout << table[i].getItem();
-            } else if (table[i].getOccupied() == -1) {
-                std::cout << "Deleted";
-            } else {
-                std::cout << "Empty";
-            }
-
-            std::cout << "\n";
+            return true;
         }
+
+        index = (index + 1) % size;
+
+    } while (index != startIndex);
+
+    return false;
+}
+
+// Getters
+int getSize() const {
+    return size;
+}
+
+int getCount() const {
+    return count;
+}
+
+bool getOccupied(int index) const {
+
+    if (index < 0 || index >= size) {
+        return false;
     }
+
+    return table[index].getOccupied() == 1;
+}
+
+T getItem(int index) const {
+    return table[index].getItem();
+}
+
+// Statistics
+double getLoadFactor() const {
+
+    return (100.0 * count) / size;
+}
+
+int getTotalCollisions() const {
+
+    return totalCollisions;
+}
+
+int getLongestCollisionPath() const {
+
+    return longestCollisionPath;
+}
+
+void displayHashStats() const {
+
+    std::cout << "\n--- Hash Table Statistics ---\n";
+
+    std::cout << "Table Size: "
+              << size << "\n";
+
+    std::cout << "Records Stored: "
+              << count << "\n";
+
+    std::cout << "Load Factor: "
+              << getLoadFactor()
+              << "%\n";
+
+    std::cout << "Total Collisions: "
+              << totalCollisions
+              << "\n";
+
+    std::cout << "Longest Collision Path: "
+              << longestCollisionPath
+              << "\n";
+}
+
+/*
+ Hidden option:
+ Print entire hash table.
+*/
+void printHashTable() const {
+
+    std::cout << "\n--- Hash Table ---\n";
+
+    for (int i = 0; i < size; i++) {
+
+        std::cout << i << ": ";
+
+        if (table[i].getOccupied() == 1) {
+
+            std::cout << table[i].getItem();
+
+        }
+        else if (table[i].getOccupied() == -1) {
+
+            std::cout << "Deleted";
+
+        }
+        else {
+
+            std::cout << "Empty";
+        }
+
+        std::cout << "\n";
+    }
+}
+```
+
 };
 
 #endif
