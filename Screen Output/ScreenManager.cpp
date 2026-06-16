@@ -10,7 +10,7 @@
 #include "ScreenManager.h"
 #include "../Song.h"
 #include "../FileIO/FileIO.h"
-
+#include "../Hash/HashTable.h"
 using namespace std;
 
 // SEARCH MANAGER
@@ -138,6 +138,7 @@ void runMenu(HashTable<Song>& table, BST& bst, Stack& undoStack) {
             case 'T': 
                 // HIDDEN OPTION: Does not display in the menu text
                 displayIndentedTree(bst);
+                table.printHashTable();
                 break;
             case 'D':
                 deleteManager(table, bst, undoStack);
