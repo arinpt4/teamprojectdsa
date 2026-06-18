@@ -1,3 +1,9 @@
+/*
+    Stack.h
+    Unit 4: Screen Output - Stack data structure for undo functionality
+    Name: Aarush Muralinathan
+*/
+
 #ifndef STACK_H
 #define STACK_H
 #include "../Song.h"
