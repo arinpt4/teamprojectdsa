@@ -88,11 +88,13 @@ void displaySortedData(BST& bst) {
     cout << "------------------------------\n";
 }
 
-void displayIndentedTree(BST& bst) {
+void hiddenOptionsManager(BST& bst, HashTable<Song>& table) {
     cout << "\n--- Indented Binary Search Tree ---\n";
     // This is the hidden 'T' option
     bst.displayTreeShape();
     cout << "-----------------------------------\n";
+    table.printHashTable();
+
 }
 
 
@@ -188,8 +190,7 @@ void runMenu(HashTable<Song>& table, BST& bst, Stack& undoStack) {
                 break;
             case 'T': 
                 // HIDDEN OPTION: Does not display in the menu text
-                displayIndentedTree(bst);
-                table.printHashTable();
+                hiddenOptionsManager(bst, table);
                 break;
             case 'D':
                 deleteManager(table, bst, undoStack);

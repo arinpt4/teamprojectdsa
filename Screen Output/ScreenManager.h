@@ -25,7 +25,7 @@ void searchManager(HashTable<Song>& table);
 void displaySortedData(BST& bst);
 
 // Displays the BST structure as an indented tree (Hidden Option)
-void displayIndentedTree(BST& bst);
+void hiddenOptionsManager(BST& bst, HashTable<Song>& table);
 
 // Prompts user for a key and deletes it from the system
 void deleteManager(HashTable<Song>& table, BST& bst, Stack& undoStack);
