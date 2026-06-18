@@ -1,8 +1,15 @@
 /*
-    ScreenManager.cpp
-    Implementation of the Unit 4 Screen Output functions.
-    Name: Aarush Muralinathan
-*/
+ * Unit 4: Screen Output
+ * Name: Aarush Muralinathan
+ * * Description: 
+ * This module acts as the user interface and central manager for the Music Player 
+ * application. It handles all menu-driven operations by prompting the user for input 
+ * and calling the appropriate data structure algorithms (Hash Table and Binary Search 
+ * Tree) to process that data. Its primary role is to bridge the user's requests 
+ * (Insert, Search, Delete, Display, Save) with the underlying data processing 
+ * system. Additionally, it manages the Undo Delete functionality by interacting 
+ * with a Stack to reverse the most recent deletion.
+ */
 
 #include <iostream>
 #include <string>
