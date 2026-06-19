@@ -1,9 +1,12 @@
 // ---------------------------------------------------------
 // Name: Huey 
 // Class: CIS 22C
-// Description: Implementation file for the Binary Search Tree
-// containing the actual code logic and recursive algorithms 
-// for Unit 2 (BST Algorithms).
+// Role in Application: 
+//    The BST acts as a secondary sorted index for the Song Player database. 
+//    To prevent data duplication, it only stores the unique Song IDs and 
+//    memory pointers referencing the primary objects in the Hash Table. 
+//    This allows the application to efficiently print and traverse the 
+//    music library in alphabetical order in O(log n) time.
 // ---------------------------------------------------------
 
 #include "BST.h"
