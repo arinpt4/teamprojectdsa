@@ -7,7 +7,7 @@
 // ---------------------------------------------------------
 
 #pragma once
-#include "Song.h"
+#include "../Song.h"
 #include <string>
 
 // Option 3 Node Structure: Key + Pointer to Hash Table data
