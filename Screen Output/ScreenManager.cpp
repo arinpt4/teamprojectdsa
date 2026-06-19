@@ -42,9 +42,12 @@ void insertManager(HashTable<Song>& table, BST& bst){
     cout << "Enter artist name: ";
     getline(cin, aName); 
     cout << "Enter song length: ";
-    cin >> length; 
+    getline(cin,length);
     cout << "Enter year published: ";
-    cin >> year; 
+    string yearInput;
+    getline(cin, yearInput);
+    year = atoi(yearInput.c_str());
+
 
     Song tempSong(key,sName,aName,length,year);
     Song* songPtr = table.insert(tempSong, key_to_index);
