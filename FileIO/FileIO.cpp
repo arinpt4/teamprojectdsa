@@ -1,3 +1,14 @@
+/*
+Unit 5: File I/O
+Name: Thomas Lwin
+Description:
+These functions handle all file input and output operations. It reads song data from an input file
+and a save file, then allocates and populates the Hash Table and Binary Search Tree with that data.
+It also manages saving the current Hash Table to a save file and rehashing the Hash Table when Necessary.
+The Hash Table is also calculated to be twice the total number of lines in the input and save files, rounded
+up to the nearest prime number.
+*/
+
 #include "FileIO.h"
 
 #include <fstream>
