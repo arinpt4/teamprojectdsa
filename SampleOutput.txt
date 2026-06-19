@@ -1,6 +1,12 @@
 *******************************************************************************************************
 Welcome to the Song Player! The Song Player allows you to insert, delete, and view songs within a file.
 *******************************************************************************************************
+No Data!
+Failed to initialize the system. Exiting.
+
+*******************************************************************************************************
+Welcome to the Song Player! The Song Player allows you to insert, delete, and view songs within a file.
+*******************************************************************************************************
 
 === Music Player Menu ===
 I - Insert a Song
@@ -32,6 +38,7 @@ Enter an option: P
 - JeIve : Jane! by The Long Faces
 - kEjfy : Club Siberia by Dom Corleo
 - kEofV : Location by Playboi Carti
+- kimlp :  by 
 - mEKfv : 90210 by Travis Scott
 - nwEfH : No Pole by Don Toliver
 - qfRjF : if looks could kill by Destroy Lonely
@@ -40,6 +47,151 @@ Enter an option: P
 - wSKlj : Toxic by slayr
 - xLEjo : x2 by Lil Uzi Vert
 ------------------------------
+
+=== Music Player Menu ===
+I - Insert a Song
+S - Search for a Song
+P - Print data sorted by ID
+D - Delete a Song
+H - Show Hash Statistics
+U - Undo delete
+F - Save to file
+Q - Quit
+Enter an option: T
+
+--- Indented Binary Search Tree ---
+        xLEjo
+                wSKlj
+                                        VomcU
+                                SfmVk
+                        qfRjF
+                                nwEfH
+mEKfv
+                        kimlp
+                kEofV
+                                                kEjfy
+                                        JeIve
+                                                        IjfFr
+                                                hIelf
+                                gIemO
+                        fIeiE
+                                                eRuHs
+                                        eqAkR
+                                eiDfj
+                                                dnGIn
+                                        csEur
+        ceVlE
+                                bRlkM
+                        blKiV
+                                BilKM
+                aJeif
+                        AfjeI
+-----------------------------------
+
+--- Hash Table ---
+0: aJeif; world without words; Nujabes; 6:15; 2004
+1: Empty
+2: Empty
+3: Empty
+4: Empty
+5: qfRjF; if looks could kill; Destroy Lonely; 3:14; 2023
+6: Empty
+7: eqAkR; 505; Artic Monkeys; 4:13; 2007
+8: Empty
+9: xLEjo; x2; Lil Uzi Vert; 3:54; 2023
+10: Empty
+11: csEur; Jealous; Eyedress; 2:02; 2020
+12: IjfFr; In & Out; Rich Amiri; 1:53; 2025
+13: Empty
+14: Empty
+15: AfjeI; Children; Robert Miles; 4:03; 1996
+16: Empty
+17: Empty
+18: Empty
+19: kimlp; ; ; ; 0
+20: dnGIn; the kill 2; Lex Armani; 2:01; 2025
+21: Empty
+22: Empty
+23: Empty
+24: Empty
+25: Empty
+26: Empty
+27: Empty
+28: eiDfj; I Wanna Be Honest; PureSnow; 2:13; 2026
+29: Empty
+30: Empty
+31: Empty
+32: Empty
+33: Empty
+34: Empty
+35: Empty
+36: Empty
+37: BilKM; escalon; Shiro SAGISU; 3:23; 2008
+38: Empty
+39: Empty
+40: JeIve; Jane!; The Long Faces; 3:06; 2018
+41: Empty
+42: Empty
+43: Empty
+44: Empty
+45: Empty
+46: VomcU; Forever Yours; Brent Faiyaz; 1:36; 2023
+47: Empty
+48: Empty
+49: Empty
+50: Empty
+51: wSKlj; Toxic; slayr; 4:29; 2026
+52: Empty
+53: Empty
+54: Empty
+55: kEofV; Location; Playboi Carti; 2:49; 2017
+56: Empty
+57: Empty
+58: Empty
+59: Empty
+60: Empty
+61: mEKfv; 90210; Travis Scott; 5:39; 2015
+62: Empty
+63: Empty
+64: hIelf; Bane; Destroy Lonely; 2:20; 2019
+65: kEjfy; Club Siberia; Dom Corleo; 2:22; 2025
+66: eRuHs; I Wonder; Kanye West; 4:03; 2007
+67: Empty
+68: Empty
+69: Empty
+70: Empty
+71: Empty
+72: Empty
+73: Empty
+74: Empty
+75: Empty
+76: ceVlE; NUMBER 2; Lil Tecca; 2:18; 2024
+77: blKiV; 1st samurai; Nujabes; 3:13; 2004
+78: Empty
+79: Empty
+80: Empty
+81: Empty
+82: Empty
+83: nwEfH; No Pole; Don Toliver; 3:07; 2023
+84: Empty
+85: Empty
+86: Empty
+87: Empty
+88: Empty
+89: Empty
+90: fIeiE; 1 of 1.; Yves; 1:55; 2025
+91: Empty
+92: Empty
+93: Empty
+94: Empty
+95: Empty
+96: Empty
+97: Empty
+98: gIemO; Timeless; The Weeknd; 4:16; 2025
+99: SfmVk; Marble Floors; Summrs; 3:28; 2024
+100: bRlkM; Music and Me; fakemink; 2:06; 2025
+101: Empty
+102: Empty
 
 === Music Player Menu ===
 I - Insert a Song
@@ -66,14 +218,11 @@ H - Show Hash Statistics
 U - Undo delete
 F - Save to file
 Q - Quit
-Enter an option: H
+Enter an option: S
 
---- Hash Table Statistics ---
-Table Size: 101
-Records Stored: 25
-Load Factor: 24.7525%
-Total Collisions: 4
-Longest Collision Path: 2
+Enter the Song ID to search for: ZZZZZ
+
+Song ID not found.
 
 === Music Player Menu ===
 I - Insert a Song
@@ -86,9 +235,9 @@ F - Save to file
 Q - Quit
 Enter an option: D
 
-Enter the Song ID to delete: AfjeI
+Enter the Song ID to delete: mEKfv
 
-Successfully deleted: Children
+Successfully deleted: 90210
 (You can press 'U' to undo this deletion.)
 
 === Music Player Menu ===
@@ -102,7 +251,7 @@ F - Save to file
 Q - Quit
 Enter an option: U
 
-Successfully restored the most recently deleted song: Children
+Successfully restored the most recently deleted song: 90210
 
 === Music Player Menu ===
 I - Insert a Song
@@ -113,8 +262,24 @@ H - Show Hash Statistics
 U - Undo delete
 F - Save to file
 Q - Quit
-Enter an option: I
-Enter key (must be 5 characters): Bjkek
+Enter an option: D
+
+Enter the Song ID to delete: ZZZZZ
+
+Song ID not found. Deletion failed.
+
+=== Music Player Menu ===
+I - Insert a Song
+S - Search for a Song
+P - Print data sorted by ID
+D - Delete a Song
+H - Show Hash Statistics
+U - Undo delete
+F - Save to file
+Q - Quit
+Enter an option: 
+I   
+Enter key (must be 5 characters): dJeLg
 Enter song name: Starboy
 Enter artist name: Weeknd
 Enter song length: 4:00
@@ -131,36 +296,14 @@ H - Show Hash Statistics
 U - Undo delete
 F - Save to file
 Q - Quit
-Enter an option: P
+Enter an option: I
+Enter key (must be 5 characters): mEKfv
+Enter song name: 90210
+Enter artist name: Travis Scot
+Enter song length: 5:39
+Enter year published: 2015
 
---- All Songs Sorted by ID ---
-- AfjeI : Children by Robert Miles
-- aJeif : world without words by Nujabes
-- BilKM : escalon by Shiro SAGISU
-- Bjkek : Starboy by Weeknd
-- blKiV : 1st samurai by Nujabes
-- bRlkM : Music and Me by fakemink
-- ceVlE : NUMBER 2 by Lil Tecca
-- csEur : Jealous by Eyedress
-- dnGIn : the kill 2 by Lex Armani
-- eiDfj : I Wanna Be Honest by PureSnow
-- eqAkR : 505 by Artic Monkeys
-- eRuHs : I Wonder by Kanye West
-- fIeiE : 1 of 1. by Yves
-- gIemO : Timeless by The Weeknd
-- hIelf : Bane by Destroy Lonely
-- IjfFr : In & Out by Rich Amiri
-- JeIve : Jane! by The Long Faces
-- kEjfy : Club Siberia by Dom Corleo
-- kEofV : Location by Playboi Carti
-- mEKfv : 90210 by Travis Scott
-- nwEfH : No Pole by Don Toliver
-- qfRjF : if looks could kill by Destroy Lonely
-- SfmVk : Marble Floors by Summrs
-- VomcU : Forever Yours by Brent Faiyaz
-- wSKlj : Toxic by slayr
-- xLEjo : x2 by Lil Uzi Vert
-------------------------------
+Error: Could not insert song. (It may already exist or the system is full).
 
 === Music Player Menu ===
 I - Insert a Song
@@ -171,12 +314,14 @@ H - Show Hash Statistics
 U - Undo delete
 F - Save to file
 Q - Quit
-Enter an option: D
+Enter an option: I
+Enter key (must be 5 characters): abcde
+Enter song name: 
+Enter artist name: 
+Enter song length: 
+Enter year published: 
 
-Enter the Song ID to delete: Bjkek
-
-Successfully deleted: Starboy
-(You can press 'U' to undo this deletion.)
+Song inserted successfully!
 
 === Music Player Menu ===
 I - Insert a Song
@@ -187,138 +332,44 @@ H - Show Hash Statistics
 U - Undo delete
 F - Save to file
 Q - Quit
-Enter an option: T
+Enter an option: S
 
---- Indented Binary Search Tree ---
-        xLEjo
-                wSKlj
-                                        VomcU
-                                SfmVk
-                        qfRjF
-                                nwEfH
-mEKfv
-                kEofV
-                                                kEjfy
-                                        JeIve
-                                                        IjfFr
-                                                hIelf
-                                gIemO
-                        fIeiE
-                                                eRuHs
-                                        eqAkR
-                                eiDfj
-                                                dnGIn
-                                        csEur
-        ceVlE
-                                bRlkM
-                        blKiV
-                                BilKM
-                aJeif
-                        AfjeI
------------------------------------
+Enter the Song ID to search for: abcdefg
 
---- Hash Table ---
-0: Empty
-1: Empty
-2: Empty
-3: Empty
-4: Empty
-5: Empty
-6: gIemO; Timeless; The Weeknd; 4:16; 2025
-7: Empty
-8: Empty
-9: Empty
-10: Empty
-11: Empty
-12: Empty
-13: Empty
-14: Empty
-15: Empty
-16: Empty
-17: Empty
-18: Empty
-19: BilKM; escalon; Shiro SAGISU; 3:23; 2008
-20: Empty
-21: Empty
-22: kEjfy; Club Siberia; Dom Corleo; 2:22; 2025
-23: Empty
-24: Empty
-25: Empty
-26: Empty
-27: Empty
-28: aJeif; world without words; Nujabes; 6:15; 2004
-29: Empty
-30: Empty
-31: xLEjo; x2; Lil Uzi Vert; 3:54; 2023
-32: nwEfH; No Pole; Don Toliver; 3:07; 2023
-33: Empty
-34: mEKfv; 90210; Travis Scott; 5:39; 2015
-35: Empty
-36: ceVlE; NUMBER 2; Lil Tecca; 2:18; 2024
-37: Empty
-38: Empty
-39: Empty
-40: Empty
-41: AfjeI; Children; Robert Miles; 4:03; 1996
-42: dnGIn; the kill 2; Lex Armani; 2:01; 2025
-43: Empty
-44: Empty
-45: Empty
-46: Empty
-47: Empty
-48: Deleted
-49: Empty
-50: Empty
-51: Empty
-52: Empty
-53: Empty
-54: Empty
-55: Empty
-56: Empty
-57: Empty
-58: Empty
-59: Empty
-60: Empty
-61: hIelf; Bane; Destroy Lonely; 2:20; 2019
-62: Empty
-63: Empty
-64: bRlkM; Music and Me; fakemink; 2:06; 2025
-65: eqAkR; 505; Artic Monkeys; 4:13; 2007
-66: Empty
-67: Empty
-68: Empty
-69: Empty
-70: Empty
-71: Empty
-72: IjfFr; In & Out; Rich Amiri; 1:53; 2025
-73: Empty
-74: qfRjF; if looks could kill; Destroy Lonely; 3:14; 2023
-75: Empty
-76: Empty
-77: eRuHs; I Wonder; Kanye West; 4:03; 2007
-78: Empty
-79: kEofV; Location; Playboi Carti; 2:49; 2017
-80: Empty
-81: Empty
-82: Empty
-83: SfmVk; Marble Floors; Summrs; 3:28; 2024
-84: Empty
-85: csEur; Jealous; Eyedress; 2:02; 2020
-86: Empty
-87: fIeiE; 1 of 1.; Yves; 1:55; 2025
-88: Empty
-89: wSKlj; Toxic; slayr; 4:29; 2026
-90: Empty
-91: Empty
-92: blKiV; 1st samurai; Nujabes; 3:13; 2004
-93: Empty
-94: Empty
-95: eiDfj; I Wanna Be Honest; PureSnow; 2:13; 2026
-96: JeIve; Jane!; The Long Faces; 3:06; 2018
-97: VomcU; Forever Yours; Brent Faiyaz; 1:36; 2023
-98: Empty
-99: Empty
-100: Empty
+Song ID not found.
+
+=== Music Player Menu ===
+I - Insert a Song
+S - Search for a Song
+P - Print data sorted by ID
+D - Delete a Song
+H - Show Hash Statistics
+U - Undo delete
+F - Save to file
+Q - Quit
+Enter an option: F
+
+Saving data to file...
+Data saved successfully.
+*** The undo stack has been cleared. Undo is no longer possible. ***
+
+=== Music Player Menu ===
+I - Insert a Song
+S - Search for a Song
+P - Print data sorted by ID
+D - Delete a Song
+H - Show Hash Statistics
+U - Undo delete
+F - Save to file
+Q - Quit
+Enter an option: H
+
+--- Hash Table Statistics ---
+Table Size: 103
+Records Stored: 28
+Load Factor: 27.1845%
+Total Collisions: 5
+Longest Collision Path: 2
 
 === Music Player Menu ===
 I - Insert a Song
@@ -334,4 +385,3 @@ Quitting!
 
 Saving data to file...
 Data saved successfully.
-*** The undo stack has been cleared. Undo is no longer possible. ***
