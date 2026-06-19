@@ -1,11 +1,13 @@
-// Title: Unit 2 - BST Algorithms Header
-/*
-    Unit 2: Binary Search Tree Algorithms (Your Design - Huey)
-    Header file: Contains the structure and function declarations.
-*/
+// ---------------------------------------------------------
+// Name: Huey
+// Class: CIS 22C
+// Description: Header file for the Binary Search Tree (BST)
+// containing the node structure and function declarations 
+// for Unit 2 (BST Algorithms).
+// ---------------------------------------------------------
 
 #pragma once
-#include "../Song.h"
+#include "Song.h"
 #include <string>
 
 // Option 3 Node Structure: Key + Pointer to Hash Table data
